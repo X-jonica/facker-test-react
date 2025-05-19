@@ -46,7 +46,7 @@ function App() {
 
       try {
          await axios.delete(
-            `https://faker-supabase-express-backend.onrender.com/api/personne/${id}`
+            `https://faker-supabase-express-backend.onrender.com/api/personne${id}`
          );
          getPersonnes();
       } catch (error) {
@@ -69,7 +69,7 @@ function App() {
 
                {/* Bouton Activer Faker */}
                <button
-                  onClick={handleActivateFaker} // 👈 Fonction à définir dans ton composant
+                  onClick={handleActivateFaker}
                   className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
                >
                   Activer Faker
