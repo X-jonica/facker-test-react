@@ -46,7 +46,7 @@ function App() {
 
       try {
          await axios.delete(
-            `https://faker-supabase-express-backend.onrender.com/api/personne${id}`
+            `https://faker-supabase-express-backend.onrender.com/api/personne/${id}`
          );
          getPersonnes();
       } catch (error) {
