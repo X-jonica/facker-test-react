@@ -1,27 +1,21 @@
-const { Pool } = require("pg");
+const { createClient } = require("@supabase/supabase-js");
 require("dotenv").config();
 
-// configuration de la pool de connexion
-const pool = new Pool({
-   user: process.env.PGUSER,
-   host: process.env.PGHOST,
-   database: process.env.PGDATABASE,
-   password: process.env.PGPASSWORD,
-   port: process.env.PGPORT,
-});
+const supabase = createClient(
+   process.env.SUPABASE_URL,
+   process.env.SUPABASE_SERVICE_ROLE_KEY
+);
 
-// test de connexion au demarage
+// Test de connexion (exemple de requête)
 (async () => {
-   try {
-      await pool.query("SELECT NOW()");
-      console.log("✅ Connecté à PostgreSQL avec succès");
-   } catch (error) {
-      console.error("❌ Erreur de connexion à PostgreSQL,", error);
+   const { data, error } = await supabase.from("personne").select("*").limit(1);
+
+   if (error) {
+      console.error("❌ Erreur de connexion à Supabase :(", error.message);
+   } else {
+      console.log("✅ Connecté à Supabase via le client JS :)");
    }
 })();
 
 // export du fichier pour pouvoir l utilisé dans un autre fichier
-module.exports = {
-   query: (text, params) => pool.query(text, params),
-   close: () => pool.end(),
-};
+module.exports = supabase;

@@ -12,9 +12,6 @@ const {
 const app = express();
 const port = 3000;
 
-// Autoriser le CORS
-app.use(cors());
-
 // OU configuration plus sécurisée pour spécifier des origines précises :
 app.use(
    cors({
@@ -29,9 +26,9 @@ app.use(morgan("dev")).use(bodyParser.json());
 
 // Routes
 app.get("/", helloWorld);
-app.get("/personne", getAllPersons);
-app.post("/personne/faker", insertFakePerson);
-app.delete("/personne/:id", deletePersonById);
+app.get("/api/personne", getAllPersons);
+app.post("/api/personne/faker", insertFakePerson);
+app.delete("/api/personne/:id", deletePersonById);
 
 app.listen(port, () => {
    console.log(`serveur start in : http://localhost:${port}`);

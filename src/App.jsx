@@ -10,7 +10,7 @@ function App() {
    //Recuperation des donnees
    const getPersonnes = async () => {
       try {
-         const response = await axios.get("http://localhost:3000/personne");
+         const response = await axios.get("http://localhost:3000/api/personne");
          setPersons(response.data.data);
          setLoading(false);
       } catch (error) {
@@ -23,7 +23,7 @@ function App() {
    const handleActivateFaker = async () => {
       try {
          const response = await axios.post(
-            "http://localhost:3000/personne/faker"
+            "http://localhost:3000/api/personne/faker"
          );
          console.log("Personne générée :", response.data);
          setLoading(false);
@@ -43,8 +43,8 @@ function App() {
       if (!confirmDelete) return;
 
       try {
-         await axios.delete(`http://localhost:3000/personne/${id}`);
-         getPersonnes(); // Rafraîchir la liste
+         await axios.delete(`http://localhost:3000/api/personne/${id}`);
+         getPersonnes(); 
       } catch (error) {
          console.error("Erreur de suppression :", error.message);
       }
