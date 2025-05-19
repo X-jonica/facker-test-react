@@ -1,23 +1,39 @@
-# React + Vite
+# Application React + Express avec Faker.js
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Ce projet démontre l'intégration d'un frontend React/Vite avec un backend Express, utilisant Faker.js pour générer des données fictives dans une base PostgreSQL.
 
-Currently, two official plugins are available:
+## Fonctionnalité Faker - Ajout de données fictives
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Installation
 
-## Expanding the ESLint configuration
+```bash
+npm install @faker-js/faker --save
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## demonstration en image :
 
-## Comment installer facker dans notre backend ?
+### 1.
 
- 1 - installer "facker-js" dans notre backend avec la commande : 
+![Page d'inscription](./src/assets/img_1.png)  
+\*Données initial
 
- ````
-   npm install @faker-js/faker --save
-   
- ````
+---
 
- 
+### 2.
+
+![Page d'inscription](./src/assets/img_2.png)  
+\*Données apres avoir activer facker
+
+---
+
+### 3.
+
+![Page d'inscription](./src/assets/img_3.png)  
+\*Prochain données apres avoir activer facker
+
+---
+
+### 4.
+
+![Page d'inscription](./src/assets/img_4.png)  
+\*Et ainsi de suite
