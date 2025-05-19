@@ -2,7 +2,12 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const cors = require("cors");
-const { getAllPersons, helloWorld } = require("./controllers/userController");
+const {
+   getAllPersons,
+   helloWorld,
+   insertFakePerson,
+   deletePersonById,
+} = require("./controllers/userController");
 
 const app = express();
 const port = 3000;
@@ -22,11 +27,11 @@ app.use(
 // Utilisation de morgan pour voir les reqettes executer depuis le server
 app.use(morgan("dev")).use(bodyParser.json());
 
-// Route
+// Routes
 app.get("/", helloWorld);
-
-//Route pour recuperer les données de la table personne
 app.get("/personne", getAllPersons);
+app.post("/personne/faker", insertFakePerson);
+app.delete("/personne/:id", deletePersonById);
 
 app.listen(port, () => {
    console.log(`serveur start in : http://localhost:${port}`);

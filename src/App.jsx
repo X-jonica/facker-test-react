@@ -19,6 +19,37 @@ function App() {
       }
    };
 
+   //Methode d'Ajout via faker
+   const handleActivateFaker = async () => {
+      try {
+         const response = await axios.post(
+            "http://localhost:3000/personne/faker"
+         );
+         console.log("Personne générée :", response.data);
+         setLoading(false);
+         getPersonnes();
+      } catch (error) {
+         console.error(error.message);
+         setLoading(false);
+      }
+   };
+
+   // Methode pour supprimer une personne
+   const handleDeletePerson = async (id) => {
+      const confirmDelete = window.confirm(
+         "Êtes-vous sûr de vouloir supprimer cette personne ?"
+      );
+
+      if (!confirmDelete) return;
+
+      try {
+         await axios.delete(`http://localhost:3000/personne/${id}`);
+         getPersonnes(); // Rafraîchir la liste
+      } catch (error) {
+         console.error("Erreur de suppression :", error.message);
+      }
+   };
+
    useEffect(() => {
       getPersonnes();
    }, []);
@@ -29,7 +60,17 @@ function App() {
    return (
       <>
          <div className="container mx-auto p-4">
-            <h1 className="text-2xl font-bold mb-4">Liste des Personnes</h1>
+            <div className="flex justify-between items-center mb-4">
+               <h1 className="text-2xl font-bold">Liste des Personnes</h1>
+
+               {/* Bouton Activer Faker */}
+               <button
+                  onClick={handleActivateFaker} // 👈 Fonction à définir dans ton composant
+                  className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+               >
+                  Activer Faker
+               </button>
+            </div>
 
             <div className="overflow-x-auto">
                <table className="min-w-full bg-white border border-gray-200">
@@ -40,6 +81,7 @@ function App() {
                         <th className="py-2 px-4 border-b">Prénom</th>
                         <th className="py-2 px-4 border-b">Sexe</th>
                         <th className="py-2 px-4 border-b">Nationalité</th>
+                        <th className="py-2 px-4 border-b">Action</th>
                      </tr>
                   </thead>
                   <tbody>
@@ -59,6 +101,15 @@ function App() {
                            </td>
                            <td className="py-2 px-4 border-b text-center capitalize">
                               {person.nationalite}
+                           </td>
+                           <td className="py-2 px-4 border-b text-center">
+                              <button
+                                 onClick={() => handleDeletePerson(person.id)}
+                                 className="text-red-600 hover:text-red-800"
+                                 title="Supprimer"
+                              >
+                                 🗑️
+                              </button>
                            </td>
                         </tr>
                      ))}
