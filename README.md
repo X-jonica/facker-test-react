@@ -1,4 +1,6 @@
-# Application React + Express avec Faker.js
+# Application React + Express avec Faker. et Supabase
+
+decouvrez la demo dans cette url : [https://faker-supabase-react-front.vercel.app/]
 
 Ce projet démontre l'intégration d'un frontend React/Vite avec un backend Express, utilisant Faker.js pour générer des données fictives dans une base PostgreSQL.
 
@@ -9,31 +11,3 @@ Ce projet démontre l'intégration d'un frontend React/Vite avec un backend Expr
 ```bash
 npm install @faker-js/faker --save
 ```
-
-## demonstration en image :
-
-### 1.
-
-![Page d'inscription](./src/assets/img_1.png)  
-\*Données initial
-
----
-
-### 2.
-
-![Page d'inscription](./src/assets/img_2.png)  
-\*Données apres avoir activer facker
-
----
-
-### 3.
-
-![Page d'inscription](./src/assets/img_3.png)  
-\*Prochain données apres avoir activer facker
-
----
-
-### 4.
-
-![Page d'inscription](./src/assets/img_4.png)  
-\*Et ainsi de suite
